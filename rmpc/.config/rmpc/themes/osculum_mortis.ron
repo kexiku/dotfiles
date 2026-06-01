@@ -3,7 +3,7 @@
 #![enable(unwrap_variant_newtypes)]
 (
     components: {},
-    default_album_art_path: "~/.config/rmpc/covers/relax.webp",
+    default_album_art_path: "~/.config/rmpc/covers/default.webp",
     show_song_table_header: true,
     draw_borders: true,
     browser_column_widths: [20, 38, 42],

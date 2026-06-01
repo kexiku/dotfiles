@@ -2,7 +2,7 @@
 Type=Application
 Name=Wallpaper Blur
 Comment=Creates a blurred copy of a background image
-Exec=$HOME/.local/bin/blur-wallpaper.sh
+Exec=blur-wallpaper
 X-GNOME-Autostart-enabled=true
 NoDisplay=true
 Categories=Utility;

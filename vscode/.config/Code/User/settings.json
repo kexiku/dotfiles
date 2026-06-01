@@ -1,8 +1,8 @@
 {
-    "update.mode": "none", // Linux-specific
-    "window.zoomLevel": 1, // Linux-specific
-    "window.restoreFullscreen": true, // Linux-specific
-    "window.newWindowDimensions": "fullscreen", // Gnome-specific~
+    "update.mode": "none",
+    "window.zoomLevel": 1,
+    "window.restoreFullscreen": true,
+    "window.newWindowDimensions": "fullscreen",
     "window.commandCenter": false,
     "workbench.tree.enableStickyScroll": false,
     "workbench.activityBar.location": "top",
@@ -17,7 +17,7 @@
     "editor.stickyScroll.scrollWithEditor": false,
     "editor.unicodeHighlight.includeStrings": false,
     "editor.unicodeHighlight.includeComments": false,
-    "javascript.suggest.autoImports": false,
+    "js.suggest.autoImports": false,
     "files.exclude": {
         ".directory": true
     },
@@ -103,5 +103,6 @@
     },
     "terminal.integrated.fontFamily": "Lilex Nerd Font",
     "terminal.integrated.fontLigatures.enabled": true,
-    "terminal.integrated.mouseWheelZoom": true
+    "terminal.integrated.mouseWheelZoom": true,
+    "workbench.colorTheme": "Dark Modern"
 }

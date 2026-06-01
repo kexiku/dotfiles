@@ -5,8 +5,6 @@
 
 **/bash/*history
 
-**/FreeFileSync/GlobalSettings.xml
-
 **/Code/User/*
 !**/Code/User/snippets
 !**/Code/User/keybindings.json

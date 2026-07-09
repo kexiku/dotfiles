@@ -79,7 +79,7 @@ ZSH_CUSTOM="$HOME/.dotfiles/zsh/.oh-my-zsh/custom"
 plugins=(
   colored-man-pages
   git
-  # linus-rants
+  nvm
   zsh-autosuggestions
 )
 
@@ -87,7 +87,16 @@ plugins=(
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 
+zstyle ':omz:plugins:nvm' lazy yes
+
 source $ZSH/oh-my-zsh.sh
+# autoload -Uz compinit
+
+# if [[ -n $HOME/.cache/zsh/zcompdump-$ZSH_VERSION(#qN.mh+24) ]]; then
+# compinit -d "$HOME/.cache/zsh/zcompdump-$ZSH_VERSION"
+# else
+# compinit -C;
+# fi; 
 
 # User configuration
 
@@ -125,15 +134,11 @@ alias df="df -h"
 
 # Enable zsh-allclear plugin
 # (from https://github.com/givensuman/zsh-allclear)
-source $HOME/.dotfiles/zsh/.oh-my-zsh/custom/plugins/zsh-allclear/zsh-allclear.plugin.zsh
+source $ZSH_CUSTOM/plugins/zsh-allclear/zsh-allclear.plugin.zsh
 
 # Enable zsh-syntax-highlighting plugin
 # (from https://github.com/zsh-users/zsh-syntax-highlighting)
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# Edit syntax highlight style
+# Disable path underlining
 ZSH_HIGHLIGHT_STYLES[path]='none'
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

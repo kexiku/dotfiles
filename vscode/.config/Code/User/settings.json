@@ -23,6 +23,7 @@
     },
     "cSpell.language": "en, ru, fr",
     "cSpell.userWords": [
+        "allclear",
         "bson",
         "dconf",
         "distro",
@@ -32,8 +33,10 @@
         "Flatseal",
         "genderize",
         "gparted",
+        "gsettings",
         "hornswaddle",
         "linebreak",
+        "magick",
         "mattjakeman",
         "miamoremustachio",
         "noninteractive",
@@ -45,10 +48,11 @@
         "plusplus",
         "rpms",
         "taskrefs",
-        "tchx"
+        "tchx",
+        "waiwai"
     ],
     "extensions.autoCheckUpdates": false,
-    "extensions.autoUpdate": false,
+    "extensions.autoUpdate": "off",
     "terminal.integrated.sendKeybindingsToShell": true,
     "explorer.compactFolders": false,
     "chat.commandCenter.enabled": false,

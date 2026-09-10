@@ -176,3 +176,4 @@ Keywords=Gnome;GTK;
 Icon=org.gnome.Tour
 StartupNotify=true
 OnlyShowIn=GNOME;
+NoDisplay=true

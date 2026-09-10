@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Visual Studio Code
+Name=VS Code
 Comment=Code Editing. Redefined.
 GenericName=Text Editor
 Exec=/usr/share/code/code %F

@@ -1,13 +1,13 @@
 {
-    "*.conf": {
-        "filetype": "ini"
-    },
-    "clipboardcopy": "wl-copy",
-    "clipboardpaste": "wl-paste",
-    "colorscheme": "atom-dark",
-    "ftdetect": {
-        "unknown": [
-            "*"
-        ]
-    }
+  "*.conf": {
+    "filetype": "ini"
+  },
+  "clipboardcopy": "wl-copy",
+  "clipboardpaste": "wl-paste",
+  "colorscheme": "atom-dark",
+  "ftdetect": {
+    "unknown": [
+      "*"
+    ]
+  }
 }

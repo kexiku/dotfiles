@@ -3,8 +3,6 @@
 **/*logs
 **/*Logs
 
-**/bash/*history
-
 **/Code/User/*
 !**/Code/User/snippets
 !**/Code/User/keybindings.json
@@ -15,8 +13,6 @@
 **/mpd/database
 
 **/qBittorrent/*data*
-
-**/vlc/vlc-qt-interface.conf
 
 **/zsh/.oh-my-zsh/custom/plugins/*
 !**/zsh/.oh-my-zsh/custom/plugins/example

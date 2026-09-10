@@ -68,6 +68,7 @@
   "git.blame.statusBarItem.template": "${authorName}",
   "git.openRepositoryInParentFolders": "never",
   "js.suggest.autoImports": false,
+  "network.meteredConnection": "off",
   "terminal.integrated.defaultProfile.linux": "zsh",
   "terminal.integrated.fontFamily": "Lilex Nerd Font",
   "terminal.integrated.fontLigatures.enabled": true,

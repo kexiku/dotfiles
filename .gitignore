@@ -12,7 +12,5 @@
 
 **/mpd/database
 
-**/qBittorrent/*data*
-
 **/zsh/.oh-my-zsh/custom/plugins/*
 !**/zsh/.oh-my-zsh/custom/plugins/example

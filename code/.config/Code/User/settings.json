@@ -59,6 +59,7 @@
   "editor.unicodeHighlight.includeComments": false,
   "editor.unicodeHighlight.includeStrings": false,
   "explorer.compactFolders": false,
+  "explorer.expandSingleFolderWorkspaces": false,
   "extensions.autoCheckUpdates": false,
   "extensions.autoUpdate": "off",
   "files.exclude": {

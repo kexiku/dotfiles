@@ -6,7 +6,12 @@
     "args": {
         "cwd": "${fileDirname}"
     },
-    "when": "terminalCount < 1"
+    "when": "terminalCount < 1 && resource && editorTextFocus"
+  },
+  {
+    "key": "ctrl+`",
+    "command": "workbench.action.terminal.new",
+    "when": "terminalCount < 1 && (!resource || !editorTextFocus)"
   },
   {
     "key": "ctrl+=",
@@ -30,5 +35,9 @@
     "key": "shift+f10",
     "command": "-editor.action.showContextMenu",
     "when": "textInputFocus"
+  },
+  {
+    "key": "alt+`",
+    "command": "mdb.treeViewOpenMongoDBShell"
   },
 ]

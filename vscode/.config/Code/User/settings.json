@@ -1,27 +1,10 @@
 {
-  "update.mode": "none",
-  "window.zoomLevel": 1,
-  "window.restoreFullscreen": true,
-  "window.newWindowDimensions": "fullscreen",
-  "window.commandCenter": false,
-  "workbench.tree.enableStickyScroll": false,
-  "workbench.activityBar.location": "top",
-  "workbench.layoutControl.enabled": false,
-  "workbench.iconTheme": "a-file-icon-vscode",
-  "workbench.startupEditor": "none",
-  "editor.tabSize": 2,
-  "editor.mouseWheelZoom": true,
-  "editor.lightbulb.enabled": "off",
-  "editor.occurrencesHighlight": "off",
-  "editor.stickyScroll.enabled": false,
-  "editor.stickyScroll.scrollWithEditor": false,
-  "editor.unicodeHighlight.includeStrings": false,
-  "editor.unicodeHighlight.includeComments": false,
-  "js.suggest.autoImports": false,
-  "files.exclude": {
-  ".directory": true
-  },
+  "chat.agent.enabled": false,
+  "chat.commandCenter.enabled": false,
+  "chat.disableAIFeatures": true,
+  "cSpell.diagnosticLevel": "Hint",
   "cSpell.language": "en, ru, fr",
+  "cSpell.showInRuler": false,
   "cSpell.userWords": [
     "allclear",
     "bson",
@@ -54,30 +37,41 @@
     "tchx",
     "waiwai"
   ],
-  "cSpell.diagnosticLevel": "Hint",
-  "extensions.autoCheckUpdates": false,
-  "extensions.autoUpdate": "off",
-  "terminal.integrated.sendKeybindingsToShell": true,
-  "explorer.compactFolders": false,
-  "chat.commandCenter.enabled": false,
-  "git.blame.editorDecoration.template": "${subject} (${authorName})",
-  "git.blame.statusBarItem.template": "${authorName}",
-  "git.openRepositoryInParentFolders": "never",
-  "workbench.secondarySideBar.defaultVisibility": "hidden",
-  "terminal.integrated.stickyScroll.enabled": false,
-  "chat.agent.enabled": false,
-  "chat.disableAIFeatures": true,
-  "cSpell.showInRuler": false,
-  "window.menuBarVisibility": "compact",
   "editor.fontFamily": "Lilex Nerd Font",
   "editor.fontLigatures": true,
   "editor.fontSize": 14,
-  "terminal.integrated.suggest.quickSuggestions": {
-    "commands": "off",
-    "arguments": "off",
-    "unknown": "off"
+  "editor.lightbulb.enabled": "off",
+  "editor.mouseWheelZoom": true,
+  "editor.occurrencesHighlight": "off",
+  "editor.stickyScroll.enabled": false,
+  "editor.stickyScroll.scrollWithEditor": false,
+  "editor.tabSize": 2,
+  "editor.tokenColorCustomizations": { // For italic comments
+    "textMateRules": [
+      {
+        "scope": "comment",
+        "settings": {
+          "fontStyle": "italic"
+        }
+      }
+    ]
   },
-  "terminal.integrated.suggest.enabled": false,
+  "editor.unicodeHighlight.includeComments": false,
+  "editor.unicodeHighlight.includeStrings": false,
+  "explorer.compactFolders": false,
+  "extensions.autoCheckUpdates": false,
+  "extensions.autoUpdate": "off",
+  "files.exclude": {
+    ".directory": true
+  },
+  "git.blame.editorDecoration.template": "${subject} (${authorName})",
+  "git.blame.statusBarItem.template": "${authorName}",
+  "git.openRepositoryInParentFolders": "never",
+  "js.suggest.autoImports": false,
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "terminal.integrated.fontFamily": "Lilex Nerd Font",
+  "terminal.integrated.fontLigatures.enabled": true,
+  "terminal.integrated.mouseWheelZoom": true,
   "terminal.integrated.profiles.linux": {
     "bash": {
       "path": "/usr/bin/bash",
@@ -98,20 +92,26 @@
       "icon": "terminal-powershell"
     }
   },
-  "terminal.integrated.defaultProfile.linux": "zsh",
+  "terminal.integrated.sendKeybindingsToShell": true,
   "terminal.integrated.shellIntegration.decorationsEnabled": "never",
-  "editor.tokenColorCustomizations": { // For italic comments
-    "textMateRules": [
-      {
-        "scope": "comment",
-        "settings": {
-          "fontStyle": "italic"
-        }
-      }
-    ]
+  "terminal.integrated.stickyScroll.enabled": false,
+  "terminal.integrated.suggest.enabled": false,
+  "terminal.integrated.suggest.quickSuggestions": {
+    "commands": "off",
+    "arguments": "off",
+    "unknown": "off"
   },
-  "terminal.integrated.fontFamily": "Lilex Nerd Font",
-  "terminal.integrated.fontLigatures.enabled": true,
-  "terminal.integrated.mouseWheelZoom": true,
-  "workbench.colorTheme": "Dark Modern"
+  "update.mode": "none",
+  "window.commandCenter": false,
+  "window.menuBarVisibility": "compact",
+  "window.newWindowDimensions": "fullscreen",
+  "window.restoreFullscreen": true,
+  "window.zoomLevel": 1,
+  "workbench.activityBar.location": "top",
+  "workbench.colorTheme": "Dark Modern",
+  "workbench.iconTheme": "a-file-icon-vscode",
+  "workbench.layoutControl.enabled": false,
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
+  "workbench.startupEditor": "none",
+  "workbench.tree.enableStickyScroll": false
 }

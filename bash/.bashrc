@@ -5,7 +5,7 @@
 # If not running interactively, don't do anything
 case $- in
   *i*) ;;
-  *) return;;
+    *) return;;
 esac
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -50,10 +50,10 @@ if [ -n "$force_color_prompt" ]; then
 	# We have color support; assume it's compliant with Ecma-48
 	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
 	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
-    else
-	color_prompt=
-    fi
+    color_prompt=yes
+  else
+    color_prompt=
+  fi
 fi
 
 if [ "$color_prompt" = yes ]; then

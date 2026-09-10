@@ -72,8 +72,6 @@ ZSH_CUSTOM="$HOME/.dotfiles/zsh/.oh-my-zsh/custom"
 # Add wisely, as too many plugins slow down shell startup.
 # 
 # Links to plugins repositories:
-# * linus-rants
-# https://github.com/bhayward93/Linus-rants-ZSH
 # * zsh-autosuggestions
 # https://github.com/zsh-users/zsh-autosuggestions
 plugins=(

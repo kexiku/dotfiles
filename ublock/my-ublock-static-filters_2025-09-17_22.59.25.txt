@@ -38,13 +38,28 @@ youtube.com##ytd-reel-shelf-renderer.ytd-structured-description-content-renderer
 ! Remove empty spaces in grid
 youtube.com##ytd-rich-grid-row,#contents.ytd-rich-grid-row:style(display: contents !important)
 
-! Dec 23, 2024 https://www.instagram.com
-www.instagram.com##._abcm._aa5t._abck._abci._abcg._abcf._abab._ab9-._abby._abbg._ab9p._ab9m._ab9h._ab9c._ab99._ab94._ab8w._ab8q
+! ------------------------------------------------------------------------------------------------------------------------/
+
+! Hide YouTube Breaking News
+youtube.com##.ytd-rich-shelf-renderer.style-scope:has(span[id="title"]:has-text(/Breaking news/i)):upward(ytd-rich-section-renderer)
+
+! ------------------------------------------------------------------------------------------------------------------------/
+
+! Hide "Experience interruptions?" pop-up
+www.youtube.com##.paper-toast-open.yt-notification-action-renderer.style-scope.toast-button
+www.youtube.com###text-container > .yt-notification-action-renderer.style-scope
+www.youtube.com###toast > .yt-notification-action-renderer.style-scope
+
+! ------------------------------------------------------------------------------------------------------------------------/
+
+! Disable Google sing in pop-up
+accounts.google.com/gsi/*
+
+! ------------------------------------------------------------------------------------------------------------------------/
+
+! Other filters
 
 ! Apr 30, 2025 https://highlysensitiverefuge.com
 highlysensitiverefuge.com##.tinymce.cp-heading.cp-field-element.cp-target > p
 highlysensitiverefuge.com##.cpro-form-container
 highlysensitiverefuge.com##.cp-panel-1.cp-top.cp-info_bar.cpro-active-step.cp-popup-content
-
-! Disable Google sing in pop-up
-accounts.google.com/gsi/*

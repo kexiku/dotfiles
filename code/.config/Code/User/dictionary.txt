@@ -3,6 +3,7 @@ Ankexi
 Anki
 Ankite
 apkg
+aunetx
 autofetch
 bson
 catppuccin
@@ -11,6 +12,7 @@ dconf
 distro
 everforest
 Excretus
+felipeftn
 FINDBAR
 flathub
 Flatpaks

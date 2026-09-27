@@ -1,4 +1,4 @@
-# run gnome-extensions list > gnome-extensions to update
+# run gnome-extensions list > gnome-extensions.txt to update
 blur-my-shell@aunetx
 emoji-copy@felipeftn
 smart-auto-move@khimaros.com

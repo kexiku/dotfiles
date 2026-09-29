@@ -2,7 +2,7 @@
 #![enable(unwrap_newtypes)]
 #![enable(unwrap_variant_newtypes)]
 (
-  default_album_art_path: "~/.config/rmpc/covers/default.webp",
+  default_album_art_path: "~/.config/rmpc/covers/custom.webp",
   format_tag_separator: " / ",
   browser_column_widths: [20, 38, 42],
   background_color: None,
@@ -17,14 +17,14 @@
   borders_style: (fg: "blue"),
   highlight_border_style: (fg: "blue"),
   symbols: (
-    song: "⛧",
-    dir: "†",
-    playlist: "𖤝",
-    marker: "ᛝ",
+    song: "🎵",
+    dir: "💿",
+    playlist: "📀",
+    marker: "❯ ",
     ellipsis: "...",
-    song_style: (fg: "light_magenta", modifiers: "Bold"),
-    dir_style: (fg: "dark_gray"),
-    playlist_style: (fg: "dark_gray"),
+    // song_style: (fg: "light_magenta", modifiers: "Bold"),
+    // dir_style: (fg: "dark_gray"),
+    // playlist_style: (fg: "dark_gray"),
   ),
   level_styles: (
     info: (fg: "blue", bg: None),
@@ -157,9 +157,9 @@
     "state": Pane(Property(
       content: [
         (kind: Text(" ")),
-        (kind: Text(" "), style: (fg: "dark_gray")),
-        (kind: Property(Status(StateV2(playing_label: " 🫀 ", paused_label: " 🥀 ", stopped_label: " 🪦 "))), style: (fg: "yellow", modifiers: "Bold")),
-        (kind: Text("  "), style: (fg: "dark_gray")),
+        (kind: Text("["), style: (fg: "dark_gray")),
+        (kind: Property(Status(StateV2(playing_label: "  ", paused_label: "  ", stopped_label: "  "))), style: (modifiers: "Bold")),
+        (kind: Text("] "), style: (fg: "dark_gray")),
       ], align: Left,
     )),
     "title": Pane(Property(
@@ -177,20 +177,34 @@
         (size: "2", pane: Pane(Property(content: [(kind: Text("%"), style: (fg: "blue"))]))),
       ]
     ),
-    "elapsed_and_bitrate": Pane(Property(
-      content: [
-        (kind: Text(" ")),
-        (kind: Property(Status(Elapsed)), style: (fg: "blue", modifiers: "Dim")),
-        (kind: Text(" / "), style: (fg: "dark_gray")),
-        (kind: Property(Status(Duration)), style: (fg: "blue", modifiers: "Dim")),
-        (kind: Group([
-          (kind: Text(" | "), style: (fg: "dark_gray")),
-          (kind: Property(Status(Bitrate)), style: (fg: "gray", modifiers: "Dim")),
-          (kind: Text(" kbps"), style: (fg: "gray", modifiers: "Dim")),
-        ])),
-      ],
-      align: Left,
-    )),
+    "elapsed_and_bitrate": 
+      Split(
+        direction: Horizontal,
+        panes: [
+          (
+            size: "100%",
+            pane: Pane(Property(
+              content: [
+                (kind: Text(" ")),
+                (kind: Property(Status(Elapsed)), style: (fg: "blue", modifiers: "Dim")),
+                (kind: Text(" / "), style: (fg: "dark_gray")),
+                (kind: Property(Status(Duration)), style: (fg: "blue", modifiers: "Dim")),
+              ],
+              align: Left,
+            )),
+          ),
+          (
+            size: "10",
+            pane: Pane(Property(
+              content: [
+                (kind: Property(Status(Bitrate)), style: (fg: "gray", modifiers: "Dim")),
+                (kind: Text(" kbps "), style: (fg: "gray", modifiers: "Dim")),
+              ],
+              align: Right,
+            )),
+          ),
+        ],
+      ),
     "artist_and_album": Pane(Property(
       content: [
         (kind: Property(Song(Artist)), style: (fg: "light_magenta", modifiers: "Italic"),

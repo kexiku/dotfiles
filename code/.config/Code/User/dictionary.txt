@@ -38,6 +38,7 @@ Flatseal
 foldmethod
 freefilesync
 FREEMEDIAHECKYEAH
+fuckoff
 genderize
 getent
 GFXMODE

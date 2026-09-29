@@ -62,14 +62,14 @@
   song_table_format: [
     (
       prop: (kind: Property(Artist), style: (modifiers: "Italic"),
-        default: (kind: Text("Unknown"))
+        default: (kind: Text("..."))
       ),
       label_prop: (kind: Text("Artist")),
       width: "35%",
     ),
     (
       prop: (kind: Property(Title), style: (modifiers: "Italic"),
-        default: (kind: Text("Unknown"))
+        default: (kind: Text("..."))
       ),
       label_prop: (kind: Text("Title")),
       width: "55%",
@@ -144,7 +144,7 @@
               size: "100%",
               borders: "TOP | BOTTOM | RIGHT",
               border_symbols: Rounded,
-              border_title: [(kind: Text(" ")), (kind: Property(Status(QueueLength()))), (kind: Text(" songs / ")), (kind: Property(Status(QueueTimeTotal()))), (kind: Text(" total time "))],
+              border_title: [(kind: Text(" ")), (kind: Property(Status(QueueLength()))), (kind: Text(" songs • ")), (kind: Property(Status(QueueTimeTotal()))), (kind: Text(" total time "))],
               border_title_alignment: Right,
               pane: Component("progress_bar"),
             ),
@@ -154,18 +154,40 @@
     ],
   ),
   components: {
-    "state": Pane(Property(
-      content: [
-        (kind: Text(" ")),
-        (kind: Text("["), style: (fg: "dark_gray")),
-        (kind: Property(Status(StateV2(playing_label: "  ", paused_label: "  ", stopped_label: "  "))), style: (modifiers: "Bold")),
-        (kind: Text("] "), style: (fg: "dark_gray")),
-      ], align: Left,
-    )),
+    "state":
+      Split(
+        direction: Horizontal,
+        panes: [
+          (
+            size: "100%",
+            pane: Pane(Property(
+              content: [
+                (kind: Text(" ")),
+                (kind: Text("["), style: (fg: "dark_gray")),
+                (kind: Property(Status(StateV2(playing_label: "  ", paused_label: "  ", stopped_label: "  "))), style: (modifiers: "Bold")),
+                (kind: Text("] "), style: (fg: "dark_gray")),
+              ], align: Left,
+            )),
+          ),
+          (
+            size: "20",
+            pane: Pane(Property(
+              content: [
+                (kind: Group([
+                  (kind: Property(Song(FileExtension)), style: (fg: "gray", modifiers: "Dim")),
+                  (kind: Text(" • "), style: (fg: "dark_gray")),
+                  (kind: Property(Status(Partition)), style: (fg: "gray", modifiers: "Dim")),
+                  (kind: Text(" "), style: (fg: "gray", modifiers: "Dim")),
+                ])),
+              ], align: Right,
+            )),
+          ),
+        ],
+      ),
     "title": Pane(Property(
       content: [
         (kind: Property(Song(Title)), style: (modifiers: "Italic"),
-          default: (kind: Text("♱"), style: (fg: "dark_gray", modifiers: "Italic"))),
+          default: (kind: Text("..."), style: (fg: "dark_gray", modifiers: "Italic"))),
       ], align: Center, scroll_speed: 1
     )),
     "volume": Split(
@@ -194,11 +216,13 @@
             )),
           ),
           (
-            size: "10",
+            size: "20",
             pane: Pane(Property(
               content: [
-                (kind: Property(Status(Bitrate)), style: (fg: "gray", modifiers: "Dim")),
-                (kind: Text(" kbps "), style: (fg: "gray", modifiers: "Dim")),
+                (kind: Group([
+                  (kind: Property(Status(Bitrate)), style: (fg: "gray", modifiers: "Dim")),
+                  (kind: Text(" kbps "), style: (fg: "gray", modifiers: "Dim")),
+                ])),
               ],
               align: Right,
             )),
@@ -207,11 +231,13 @@
       ),
     "artist_and_album": Pane(Property(
       content: [
+        (kind: Text(" ")),
         (kind: Property(Song(Artist)), style: (fg: "light_magenta", modifiers: "Italic"),
           default: (kind: Text("Unknown"), style: (fg: "dark_gray", modifiers: "Italic"))),
-        (kind: Text(" ✧ ")),
+        (kind: Text(" ✦ ")),
         (kind: Property(Song(Album)), style: (modifiers: "Italic"),
           default: (kind: Text("Unknown"), style: (fg: "dark_gray", modifiers: "Italic"))),
+        (kind: Text(" ")),
       ], align: Center, scroll_speed: 1
     )),
     "states": Split(

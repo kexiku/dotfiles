@@ -1,5 +1,6 @@
 adduser
 ALAC
+albumartist
 allclear
 ALSA
 Ankexi
@@ -51,6 +52,7 @@ iwctl
 kanagawa
 kbps
 Kexi
+keybinds
 keyrings
 keyserver
 keyservers
@@ -80,6 +82,7 @@ netinst
 Neumann
 Neuro
 neurodebian
+newtypes
 noninteractive
 nord
 Nori
@@ -89,7 +92,9 @@ nuska
 nvme
 Okular
 oleg
+oneshot
 opsz
+oscumorti
 pacman
 phonebook
 pipx
@@ -97,10 +102,13 @@ pkgs
 playables
 plusplus
 PPID
+Rescan
+rmpc
 rosé
 rpms
 sandboxed
 SAVEDEFAULT
+scrolloff
 sinonim
 sudoedit
 swapoff

@@ -44,6 +44,9 @@
   "explorer.expandSingleFolderWorkspaces": false,
   "extensions.autoCheckUpdates": false,
   "extensions.autoUpdate": "off",
+  "files.associations": {
+    "*.ron": "rust"
+  },
   "files.exclude": {
     ".directory": true // directory's metadata file for KDE Plasma
   },

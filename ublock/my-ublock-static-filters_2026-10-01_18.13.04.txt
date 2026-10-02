@@ -58,25 +58,26 @@ www.youtube.com###toast > .yt-notification-action-renderer.style-scope
 
 ! Hide top news, playables games and other bullshit
 www.youtube.com##ytd-rich-section-renderer.ytd-rich-grid-renderer.style-scope:nth-of-type(1)
+www.youtube.com##ytd-rich-section-renderer.ytd-rich-grid-renderer.style-scope:nth-of-type(2)
 www.youtube.com##ytd-rich-section-renderer.ytd-rich-grid-renderer.style-scope:nth-of-type(3)
 www.youtube.com##ytd-rich-section-renderer.ytd-rich-grid-renderer.style-scope:nth-of-type(4)
 www.youtube.com##ytd-rich-section-renderer.ytd-rich-grid-renderer.style-scope:nth-of-type(5)
 
 ! ------------------------------------------------------------------------------------------------------------------------/
-! 📋 OTHER FILTERS
+! 🔍 Google
 ! ------------------------------------------------------------------------------------------------------------------------/
 
 ! Disable Google sing in pop-up
 accounts.google.com/gsi/*
 
 ! ------------------------------------------------------------------------------------------------------------------------/
+! 🧠 ChatGPT
+! ------------------------------------------------------------------------------------------------------------------------/
 
 ! Disable ChatGPT ads
 chatgpt.com##.dark\:bg-token-main-surface-secondary.text-token-text-primary.bg-token-bg-primary.border-token-border-default.md\:items-center.shadow-xxs.gap-4.dark\:border-transparent.lg\:mx-auto.\[text-wrap\:pretty\].text-sm.pe-3.ps-5.py-4.border.rounded-3xl.items-start.w-full.flex
 
-! ------------------------------------------------------------------------------------------------------------------------/
 
-! Apr 30, 2025 https://highlysensitiverefuge.com
-highlysensitiverefuge.com##.tinymce.cp-heading.cp-field-element.cp-target > p
-highlysensitiverefuge.com##.cpro-form-container
-highlysensitiverefuge.com##.cp-panel-1.cp-top.cp-info_bar.cpro-active-step.cp-popup-conten
+! ------------------------------------------------------------------------------------------------------------------------/
+! 🛡️ OTHER FILTERS
+! ------------------------------------------------------------------------------------------------------------------------/

@@ -2,7 +2,4 @@
 -P ~/Videos/
 
 # Custom ffmpeg build path:
---ffmpeg-location ~/.local/share/yt-dlp/ffmpeg/bin
-
-# Enable Node.js runtime
-# --js-runtimes node
+--ffmpeg-location ~/.yt-dlp/ffmpeg/bin

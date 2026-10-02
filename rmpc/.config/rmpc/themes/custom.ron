@@ -28,10 +28,10 @@
   ),
   level_styles: (
     info: (fg: "blue", bg: None),
-    warn: (fg: "yellow", bg: "black"),
-    error: (fg: "red", bg: "black"),
-    debug: (fg: "light_green", bg: "black"),
-    trace: (fg: "magenta", bg: "black"),
+    warn: (fg: "yellow", bg: None),
+    error: (fg: "red", bg: None),
+    debug: (fg: "light_green", bg: None),
+    trace: (fg: "magenta", bg: None),
   ),
   progress_bar: (
     symbols: ["█", "█", "█", " ", "█"],

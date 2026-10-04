@@ -1,42 +1,40 @@
-# Custom theme
+# prompt theme
 ZSH_THEME="waiwai"
 
-# User configuration
+# aliases
+source $ZSH/aliases.zsh
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='nvim'
-# fi
+setopt multios # enable redirect to multiple streams: echo >file1 >file2
 
-# Aliases
-alias ls="ls --color=tty --group-directories-first"
-alias lsa="ls -a"
-alias c="clear"
-alias cl="clear"
-alias df="df -h"
+## History command configuration
+setopt extended_history       # record timestamp of command in HISTFILE
+setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt hist_ignore_dups       # ignore duplicated commands history list
+setopt hist_ignore_space      # ignore commands that start with space
+setopt hist_verify            # show command with history expansion to user before running it
+setopt share_history          # share command history data
 
-# Plugins
+# Changing/making/removing directory
+setopt auto_cd
+setopt auto_pushd
+setopt pushd_ignore_dups
+setopt pushdminus
+
+# plugins
 plugins=(
-  colored-man-pages
-  git
+  # colored-man-pages
+  # git
   zsh-autosuggestions
 )
-# Links to plugins repositories:
-# * zsh-autosuggestions
-# https://github.com/zsh-users/zsh-autosuggestions
 
-# Plugins configuration
+# plugins configuration
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 
-# Enable zsh-allclear plugin
-# (from https://github.com/givensuman/zsh-allclear)
-source $ZSH_CUSTOM/plugins/zsh-allclear/zsh-allclear.plugin.zsh
+# load all plugins and theme
+source "$ZSH/helpers/load.helper.zsh"
 
 # Enable zsh-syntax-highlighting plugin
-# (from https://github.com/zsh-users/zsh-syntax-highlighting)
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Disable path underlining

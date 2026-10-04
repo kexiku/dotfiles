@@ -39,7 +39,6 @@ local current_dir="%B${BLUE}%~${RESET_C}"
 local return_code="%B%(?..${RED}%? ❰${RESET_C})"
 
 local vcs_prompt='$(git_prompt_info)'
-local venv_prompt='$(virtualenv_prompt_info)'
 
 local emoji='%B%(?.%{$(get_emoji)%}  .${FAIL})%b'
 
@@ -613,7 +612,7 @@ fi
 
 # ╭── 𖹭 PROMPT 𖹭 ──────────────────────────────────────────────────────────────────────────────────
 # │
-PROMPT="╭─${user_prompt} ${current_dir} ${vcs_prompt}${venv_prompt}${kube_prompt}
+PROMPT="╭─${user_prompt} ${current_dir} ${vcs_prompt}${kube_prompt}
 ╰─${emoji} "
 RPROMPT="${return_code}"
 
@@ -621,8 +620,3 @@ ZSH_THEME_GIT_PROMPT_PREFIX="${GRAY}✦ ${ITALIC}"
 ZSH_THEME_GIT_PROMPT_SUFFIX=" ${RESET_I}%f${RESET_C}"
 ZSH_THEME_GIT_PROMPT_DIRTY="${RESET_I}${RED} ❤︎ ${GRAY}"
 ZSH_THEME_GIT_PROMPT_CLEAN="${RESET_I}${GREEN} ☘︎ ${GRAY}"
-
-ZSH_THEME_VIRTUAL_ENV_PROMPT_PREFIX="${GREEN}‹"
-ZSH_THEME_VIRTUAL_ENV_PROMPT_SUFFIX="› ${RESET_C}"
-ZSH_THEME_VIRTUALENV_PREFIX="$ZSH_THEME_VIRTUAL_ENV_PROMPT_PREFIX"
-ZSH_THEME_VIRTUALENV_SUFFIX="$ZSH_THEME_VIRTUAL_ENV_PROMPT_SUFFIX"

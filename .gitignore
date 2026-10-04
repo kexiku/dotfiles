@@ -13,5 +13,7 @@
 
 **/mpd/database
 
-**/zsh/.oh-my-zsh/custom/plugins/*
-!**/zsh/.oh-my-zsh/custom/plugins/example
+**/zsh/plugins/*
+
+**/zsh/themes/*
+!**/zsh/themes/waiwai.zsh-theme

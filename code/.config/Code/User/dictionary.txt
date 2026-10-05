@@ -27,6 +27,7 @@ cssclasses
 DCCP
 dconf
 deluser
+dircolors
 dirmngr
 distro
 distros
@@ -74,6 +75,7 @@ Lilex
 linebreak
 literata
 Logiciel
+LSCOLORS
 macchiato
 macrotask
 Macrotasks
@@ -124,6 +126,7 @@ Rescan
 rmpc
 rosé
 rpms
+RPROMPT
 sandboxed
 SAVEDEFAULT
 SAVEHIST
@@ -144,6 +147,7 @@ thedir
 titlebar
 torrenting
 Trixie
+unfunction
 unifont
 unshift
 Userland

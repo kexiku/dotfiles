@@ -16,16 +16,15 @@ plugins=(
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 
-# add functions and completions dirs to fpath
-fpath=($ZSH_CONFIG/{functions,completions} $fpath)
-
 # autoload compinit
 autoload -Uz compinit
 
-# source helpers
-source "$ZSH_CONFIG/lib/helpers.zsh"
+# add functions and completions dirs to fpath
+fpath=($ZSH_CONFIG/{functions,completions} $fpath)
 
 # add all plugins from the 'plugins' array to fpath
+source "$ZSH_CONFIG/helpers/plugin.helper.zsh"
+
 for plugin ($plugins); do
   if is_plugin "$ZSH_CONFIG" "$plugin"; then
     fpath=("$ZSH_CONFIG/plugins/$plugin" $fpath)
@@ -33,6 +32,7 @@ for plugin ($plugins); do
     echo "[zsh] Plugin '$plugin' not found."
   fi
 done
+
 unset plugin
 
 # define zcompdump
@@ -51,9 +51,12 @@ fi
 for plugin ($plugins); do
   source "$ZSH_CONFIG/plugins/$plugin/$plugin.plugin.zsh"
 done
+
 unset plugin
 
 # load theme
+source "$ZSH_CONFIG/helpers/theme.helper.zsh"
+
 if [[ -n "$ZSH_THEME" ]]; then
   if is_theme "$ZSH_CONFIG/themes" "$ZSH_THEME"; then
     source "$ZSH_CONFIG/themes/$ZSH_THEME.zsh-theme"
@@ -62,14 +65,12 @@ if [[ -n "$ZSH_THEME" ]]; then
   fi
 fi
 
-# aliases
-source "$ZSH_CONFIG/lib/aliases.zsh"
+# load all the lib files
+for lib_file ("$ZSH_CONFIG"/lib/*); do
+  source "$ZSH_CONFIG/lib/${lib_file}"
+done
 
-# history
-source "$ZSH_CONFIG/lib/history.zsh"
-
-# navigation
-source "$ZSH_CONFIG/lib/navigation.zsh"
+unset lib_file
 
 # streams
 setopt multios # enable redirect to multiple streams: echo >file1 >file2

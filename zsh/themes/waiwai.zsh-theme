@@ -9,8 +9,8 @@ CYAN="%{$fg[cyan]%}"
 WHITE="%{$fg[white]%}"
 GRAY="%F{8}"
 
-ITALIC="%{\e[3m%}"
-RESET_I="%{\e[0m%}"
+ITALIC=$'%{\e[3m%}'
+RESET_I=$'%{\e[0m%}'
 RESET_C="%{$reset_color%}"
 
 # ✮ SET ⋆ YOUR ⋆ BIRTHDAY ⋆ HERE ✮
@@ -23,7 +23,14 @@ typeset -i BIRTHDAY=1012 # <-─────╯
 typeset -i CURRENT_YEAR=$(date +%Y)
 typeset -i CURRENT_DATE=10#$(date +%m%d)
 
-# ✦ ─ Local variables ─────────────────────────────────────────────────────────────────────────────
+# ✦ ─ Git status ──────────────────────────────────────────────────────────────────────────────────
+
+GIT_PROMPT_PREFIX="${GRAY}✦ ${ITALIC}"
+GIT_PROMPT_SUFFIX=" ${RESET_I}%f${RESET_C}"
+GIT_PROMPT_DIRTY="${RESET_I}${RED} ❤︎ ${GRAY}"
+GIT_PROMPT_CLEAN="${RESET_I}${GREEN} ☘︎ ${GRAY}"
+
+# ✦ ─ Prompt strings ──────────────────────────────────────────────────────────────────────────────
 
 local user_name="%(!.${RED}.${CYAN})%n"
 local host_name="%(!.${RED}.${CYAN})%m"
@@ -37,8 +44,6 @@ fi
 
 local current_dir="%B${BLUE}%~${RESET_C}"
 local return_code="%B%(?..${RED}%? ❰${RESET_C})"
-
-local vcs_prompt='$(git_prompt_info)'
 
 local emoji='%B%(?.%{$(get_emoji)%}  .${FAIL})%b'
 
@@ -602,21 +607,81 @@ function get_emoji() {
   fi
 }
 
-# ╭── 𖹭 EXTRA 𖹭 ───────────────────────────────────────────────────────────────────────────────────
-# │
-if [[ "${plugins[@]}" =~ 'kube-ps1' ]]; then
-  local kube_prompt='$(kube_ps1)'
-else
-  local kube_prompt=''
-fi
-
 # ╭── 𖹭 PROMPT 𖹭 ──────────────────────────────────────────────────────────────────────────────────
 # │
-PROMPT="╭─${user_prompt} ${current_dir} ${vcs_prompt}${kube_prompt}
+# ✦ ─ Vcs options ─────────────────────────────────────────────────────────────────────────────────
+
+autoload -Uz vcs_info add-zsh-hook
+
+# Allow parameter expansion & command substitution inside the prompt
+setopt prompt_subst
+
+zstyle ':vcs_info:*' enable git # Use git as vcs
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr   '+'
+zstyle ':vcs_info:git:*' unstagedstr '*'
+
+# ✦ ─ Vcs formats ─────────────────────────────────────────────────────────────────────────────────
+
+# Each format creates two outputs:
+# 1st output => $vcs_info_msg_0_ (branch)
+# 2nd output => $vcs_info_msg_1_ (repo state; empty if clean)
+
+# • ────────────────────── format type ── 1st output ── 2nd output
+zstyle ':vcs_info:git:*'   formats        '%b'          '%c%u'
+zstyle ':vcs_info:git:*'   actionformats  '%b (%a)'     '%c%u'
+# zstyle ':vcs_info:*:*'   nvcsformats    ''            ''
+
+# ✦ ─ Vcs status ──────────────────────────────────────────────────────────────────────────────────
+
+local vcs_prompt
+
+update_vcs_prompt() {
+  vcs_info
+
+  local branch=$vcs_info_msg_0_
+  local state=$vcs_info_msg_1_
+
+  # Exit if current directory is not a repo
+  if [[ -z $branch ]]; then
+    vcs_prompt=''
+    return 0
+  fi
+
+  # Check if repo is dirty
+  local state_flag=$GIT_PROMPT_CLEAN
+  [[ -n $state ]] && state_flag=$GIT_PROMPT_DIRTY
+
+  vcs_prompt="${GIT_PROMPT_PREFIX}${branch}${state_flag}${GIT_PROMPT_SUFFIX}"
+}
+
+# Update vcs status on every prompt
+add-zsh-hook precmd update_vcs_prompt
+
+# ✦ ─ Prompt definition ───────────────────────────────────────────────────────────────────────────
+
+PROMPT="╭─${user_prompt} ${current_dir} \${vcs_prompt}
 ╰─${emoji} "
 RPROMPT="${return_code}"
 
-ZSH_THEME_GIT_PROMPT_PREFIX="${GRAY}✦ ${ITALIC}"
-ZSH_THEME_GIT_PROMPT_SUFFIX=" ${RESET_I}%f${RESET_C}"
-ZSH_THEME_GIT_PROMPT_DIRTY="${RESET_I}${RED} ❤︎ ${GRAY}"
-ZSH_THEME_GIT_PROMPT_CLEAN="${RESET_I}${GREEN} ☘︎ ${GRAY}"
+# ╭── 𖹭 MISC 𖹭 ────────────────────────────────────────────────────────────────────────────────────
+# │
+# ✦ ─ prompt format strings ───────────────────────────────────────────────────────────────────────
+
+# %F => color dict
+# %f => reset color
+# %~ => current path
+# %* => time
+# %n => username
+# %m => hostname
+
+# ✦ ─ vcs_info format strings ─────────────────────────────────────────────────────────────────────
+
+# %b => current branch
+# %a => current action (rebase, merge, etc.)
+# %s => current vcs
+# %r => repo's root directory
+# %S => current path (relative to root)
+# %m => stashes info
+# %c => staged changes
+# %u => unstaged changes

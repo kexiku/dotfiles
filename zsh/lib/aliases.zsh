@@ -18,7 +18,7 @@ alias 8='cd -8'
 alias 9='cd -9'
 
 # list contents
-alias ls='ls --color=tty --group-directories-first'
+alias ls='ls --group-directories-first'
 alias l='ls -lah'
 alias la='ls -lAh'
 alias lsa='ls -lah'

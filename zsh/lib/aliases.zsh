@@ -1,8 +1,11 @@
+# file system navigation
+# moving up
 alias -g ...='../..'
 alias -g ....='../../..'
 alias -g .....='../../../..'
 alias -g ......='../../../../..'
 
+# directory stack
 alias -- -='cd -'
 alias 1='cd -1'
 alias 2='cd -2'
@@ -14,15 +17,18 @@ alias 7='cd -7'
 alias 8='cd -8'
 alias 9='cd -9'
 
-alias md='mkdir -p'
-alias rd=rmdir
-
-# List directory contents
-alias ls="ls --color=tty --group-directories-first"
-alias lsa='ls -lah'
+# list contents
+alias ls='ls --color=tty --group-directories-first'
 alias l='ls -lah'
-alias ll='ls -lh'
 alias la='ls -lAh'
-alias c="clear"
-alias cl="clear"
-alias df="df -h"
+alias lsa='ls -lah'
+alias ll='ls -lh'
+
+# other aliases
+alias md='mkdir -p'
+alias rd='rmdir'
+
+alias c='clear'
+alias cl='clear'
+
+alias df='df -h'

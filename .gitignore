@@ -17,3 +17,5 @@
 
 **/zsh/themes/*
 !**/zsh/themes/waiwai.zsh-theme
+
+**/zsh/.zshrc.bak

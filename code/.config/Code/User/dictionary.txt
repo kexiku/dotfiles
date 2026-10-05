@@ -10,6 +10,7 @@ apkg
 aunetx
 autofetch
 Autoremove
+autoselect
 BIDI
 bson
 Btrfs
@@ -21,6 +22,7 @@ codepoints
 compaudit
 COMPDUMP
 COMPFIX
+compinstall
 cssclasses
 DCCP
 dconf
@@ -51,6 +53,7 @@ gparted
 Grubhalla
 gsettings
 happyzxzxz
+histignorealldups
 hitbox
 hkps
 hornswaddle
@@ -84,6 +87,7 @@ microtask
 microtasks
 Minix
 mirrorlist
+mkcd
 mkconfig
 mkfont
 mountpoint
@@ -122,14 +126,21 @@ rosé
 rpms
 sandboxed
 SAVEDEFAULT
+SAVEHIST
 scollbar
 scrolloff
+sharehistory
 sinonim
 sudoedit
 swapoff
 swapon
+takedir
+takegit
+takeurl
+takezip
 taskrefs
 tchx
+thedir
 titlebar
 torrenting
 Trixie

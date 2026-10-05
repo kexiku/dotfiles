@@ -1,6 +1,5 @@
 autoload -Uz is-at-least
 
-# *-magic is known buggy in some versions; disable if so
 if [[ $DISABLE_MAGIC_FUNCTIONS != true ]]; then
   for d in $fpath; do
     if [[ -e "$d/url-quote-magic" ]]; then

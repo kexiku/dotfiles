@@ -12,13 +12,13 @@ plugins=(
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 
-# load compinit
-autoload -Uz compinit
+# avoid duplicated entries in fpath
+typeset -U fpath
 
-# add completions to fpath
-fpath=("$ZSH_CONFIG/completions" $fpath)
+# add functions & completions to fpath
+fpath=("$ZSH_CONFIG"/{functions,completions} $fpath)
 
-# add all plugins from the 'plugins' array to fpath
+# add plugins to fpath
 source "$ZSH_CONFIG/helpers/plugin.helper.zsh"
 
 for plugin ($plugins); do
@@ -30,39 +30,47 @@ for plugin ($plugins); do
 done
 unset plugin
 
+# load functions
+functions=("$ZSH_CONFIG"/functions/*(N-.:t)) # match null glob, regular files and symlinks to them
+(( $#functions )) && autoload -Uz $functions # if array is not empty, autoload functions
+unset functions
+
 # create cache dir if missing
 mkdir -p "$ZSH_CACHE"
 
 # define zcompdump
 ZCOMPDUMP="$ZSH_CACHE/.zcompdump"
 
+# load compinit
+autoload -Uz compinit
+
 # run compinit
-if [[ -n $ZCOMPDUMP(#qN.mh+24) ]]; then
+if [[ ! -f $ZCOMPDUMP || -n $ZCOMPDUMP(#qN.mh+24) ]]; then
   # full check if a previous dump is older than a day
   compinit -d "$ZCOMPDUMP"
 else
-  # skip the check otherwise
-  compinit -C
+  # skip the checks otherwise
+  compinit -C -d "$ZCOMPDUMP"
 fi
-
-# load functions
-for functions ("$ZSH_CONFIG"/functions/*.zsh); do
-  source "$functions"
-done
-unset functions
-
-# load plugins
-for plugin ($plugins); do
-  is_plugin "$ZSH_CONFIG" "$plugin"
-    && source "$ZSH_CONFIG/plugins/$plugin/$plugin.plugin.zsh"
-done
-unset plugin
 
 # load lib files
 for lib_file ("$ZSH_CONFIG"/lib/*.zsh); do
   source "$lib_file"
 done
 unset lib_file
+
+# load plugins
+for plugin ($plugins); do
+  is_plugin "$ZSH_CONFIG" "$plugin" \
+    && source "$ZSH_CONFIG/plugins/$plugin/$plugin.plugin.zsh"
+done
+unset plugin
+
+# load aliases
+for alias_file ("$ZSH_CONFIG"/aliases/*.zsh); do
+  source "$alias_file"
+done
+unset alias_file
 
 # load theme
 source "$ZSH_CONFIG/helpers/theme.helper.zsh"
@@ -79,4 +87,6 @@ fi
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # disable path underlining
+(( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[path]='none'
+ZSH_HIGHLIGHT_STYLES[path_prefix]='none'

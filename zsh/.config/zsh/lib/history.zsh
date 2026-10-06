@@ -1,5 +1,5 @@
 # set history file properties
-HISTFILE="$ZSH/.zsh_history"
+HISTFILE="$ZSH_CACHE/.zsh_history"
 HISTSIZE=10000
 SAVEHIST=10000
 

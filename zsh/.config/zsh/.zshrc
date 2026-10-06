@@ -31,9 +31,9 @@ done
 unset plugin
 
 # load functions
-functions=("$ZSH_CONFIG"/functions/*(N-.:t)) # match null glob, regular files and symlinks to them
-(( $#functions )) && autoload -Uz $functions # if array is not empty, autoload functions
-unset functions
+func_file=("$ZSH_CONFIG"/functions/*(N-.:t)) # match null glob, regular files and symlinks to them
+(( $#func_file )) && autoload -Uz $func_file # if array is not empty, autoload functions
+unset func_file
 
 # create cache dir if missing
 mkdir -p "$ZSH_CACHE"

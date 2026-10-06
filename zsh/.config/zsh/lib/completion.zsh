@@ -8,8 +8,6 @@ WORDCHARS=''
 setopt auto_menu        # show completion menu on tab press
 unsetopt menu_complete  # do not autoselect the first completion entry
 unsetopt flowcontrol    # prevent Ctrl+S to freeze the terminal output
-
-setopt complete_in_word # completes at the cursor position inside a word
 setopt always_to_end    # after completing, move the cursor to the end of the word
 
 # show selection menu on every completion
@@ -61,6 +59,9 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
 
 # ...unless we really want to.
 zstyle '*' single-ignored show
+
+# bind Shift+Tab to reverse menu completion
+bindkey -M menuselect '^[[Z' reverse-menu-complete
 
 # autoload bash completion functions
 autoload -U +X bashcompinit && bashcompinit

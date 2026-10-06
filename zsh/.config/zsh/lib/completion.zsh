@@ -39,7 +39,7 @@ zstyle ':completion:*:cd:*' tag-order named-directories local-directories direct
 
 # use caching to use completions for commands like apt and dpkg
 zstyle ':completion:*' use-cache yes
-zstyle ':completion:*' cache-path "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompcache"
+zstyle ':completion:*' cache-path "$ZSH_CACHE/zcompcache"
 
 # set colors for kill process list
 zstyle ':completion:*' list-colors '' # unset all colors first

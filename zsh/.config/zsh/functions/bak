@@ -1,0 +1,37 @@
+# bak: Create a backup copy of a file
+
+# Check if argument was provided
+if (( $# == 0 )); then
+  printf '%s\n' 'Error: no file or directory specified' >&2
+  return 1
+fi
+
+# Prevent variables from accessing globally
+local target backup ans
+
+# Remove trailing slash, if any
+target="${1%/}"
+
+# Check if target exists
+if [ ! -e "$target" ]; then
+  printf "'%s': No such file or directory\n" "$target" >&2
+	return 1
+fi
+
+# If target already ends with ".bak" - do NOT add another ".bak"
+[[ $target == *.bak ]] && backup="$target" || backup="$target.bak"
+
+# Ask before overwriting existing backup file
+if [ -e "$backup" ]; then
+  printf "'%s' already exists. Overwrite? [Y/n] " "$backup"
+  read ans
+
+  [[ $ans =~ ^[Yy]$ ]] || return 1
+fi
+
+if ! cp -- "$target" "$backup"; then
+  printf "Error: failed to create backup of '%s'\n" "$target" >&2
+  return 1
+fi
+
+printf "'%s': backup successfully created\n" "$target"

@@ -1,37 +1,48 @@
-# bak: Create a backup copy of a file
+# bak: Create a backup copy of a file or directory
+emulate -L zsh
 
 # Check if argument was provided
-if (( $# == 0 )); then
-  printf '%s\n' 'Error: no file or directory specified' >&2
-  return 1
+if (( $# != 1 )); then
+  print -u2 "usage: bak <file-or-directory>"
+  return 2
 fi
 
 # Prevent variables from accessing globally
-local target backup ans
+local target backup
 
-# Remove trailing slash, if any
-target="${1%/}"
+# Strip trailing slashes
+target=$1
+
+while [[ "$target" == ?*/ ]]; do
+  target="${target%/}"
+done
 
 # Check if target exists
 if [ ! -e "$target" ]; then
-  printf "'%s': No such file or directory\n" "$target" >&2
+  print -u2 "'$target': No such file or directory"
 	return 1
 fi
 
 # If target already ends with ".bak" - do NOT add another ".bak"
 [[ $target == *.bak ]] && backup="$target" || backup="$target.bak"
 
+# Check if target is a backup file
+if [[ "$backup" == "$target" ]]; then
+  print -u2 "'$target' is already a backup"
+  return 0
+fi
+
 # Ask before overwriting existing backup file
 if [ -e "$backup" ]; then
-  printf "'%s' already exists. Overwrite? [Y/n] " "$backup"
-  read ans
-
-  [[ $ans =~ ^[Yy]$ ]] || return 1
+  if ! read -q "?'$backup' already exists. Overwrite? [Y/n] "; then
+    print
+    return 0
+  fi
+  print
+  rm -rf -- "$backup" || return
 fi
 
-if ! cp -- "$target" "$backup"; then
-  printf "Error: failed to create backup of '%s'\n" "$target" >&2
-  return 1
-fi
+# Create a backup (keep permissions & timestamps)
+cp -a -- "$target" "$backup" || return
 
-printf "'%s': backup successfully created\n" "$target"
+print "'$target': backup successfully created"

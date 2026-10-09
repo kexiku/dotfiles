@@ -62,7 +62,7 @@
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.cursorStyleInactive": "none",
-  "terminal.integrated.defaultProfile.linux": "bash",
+  "terminal.integrated.defaultProfile.linux": "zsh",
   "terminal.integrated.fontFamily": "Lilex Nerd Font",
   "terminal.integrated.fontLigatures.enabled": true,
   "terminal.integrated.mouseWheelZoom": false,
@@ -78,11 +78,9 @@
     },
     "tmux": {
       "path": "tmux",
-      "icon": "terminal-tmux"
     },
     "pwsh": {
       "path": "pwsh",
-      "icon": "terminal-powershell"
     }
   },
   "terminal.integrated.sendKeybindingsToShell": true,

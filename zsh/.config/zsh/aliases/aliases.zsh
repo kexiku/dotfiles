@@ -23,18 +23,26 @@ alias la='ls -lAFh'
 alias lsa='ls -laFh'
 alias ll='ls -lFh'
 
-# confirmation before overwriting
+# ask before overwriting
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
 
-# other aliases
+# directories
 alias md='mkdir -p'
 alias rd='rmdir'
 
+# history
+alias h='history'
+alias hl='history | less'
+alias hs='history | grep'
+alias hsi='history | grep -i'
+
+# clear
 alias c='clear'
 alias cl='clear'
 
+# other aliases
 alias grep='grep --color'
 
 alias df='df -h'

@@ -1,11 +1,11 @@
 # set history file properties
-HISTFILE="$ZSH_CACHE/.zsh_history"
+HISTFILE="$ZSTATE/.zhist"
 HISTSIZE=10000
 SAVEHIST=10000
 
-setopt extended_history       # record timestamp of command in HISTFILE
-setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt append_history         # append history to HISTFILE on session exit
+setopt extended_history       # record command timestamps in HISTFILE
 setopt hist_ignore_dups       # ignore duplicated commands history list
 setopt hist_ignore_space      # ignore commands that start with space
+setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
 setopt hist_verify            # show command with history expansion to user before running it
-setopt share_history          # share command history data

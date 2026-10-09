@@ -1,14 +1,11 @@
 # path
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/games:$PATH
-
-# zsh variables
-export ZSH="$HOME/.zsh"
-export ZSH_CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
-export ZSH_CONFIG="${ZDOTDIR:-${XDG_CONFIG_HOME:-$HOME/.config}/zsh}"
+export PATH=$HOME/.local/bin:$PATH:/usr/games
 
 # preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR="vim"
+  export VISUAL="nano"
+  export EDITOR="nano"
 else
-  export EDITOR="nvim"
+  export VISUAL="nano"
+  export EDITOR="nano"
 fi

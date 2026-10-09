@@ -71,6 +71,7 @@ keybinds
 keyrings
 keyserver
 keyservers
+Kitwall
 Lilex
 linebreak
 literata
@@ -163,11 +164,15 @@ Wimblows
 wlan
 xdpyinfo
 xsettingsd
+ZCACHE
 zcompcache
 zcompdump
 zcompile
+zhist
 Zoomer
 zrecompile
+zshist
+ZSTATE
 Άλφα
 Βήτα
 Γάμμα

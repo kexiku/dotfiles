@@ -37,7 +37,7 @@ zstyle ':completion:*:cd:*' tag-order named-directories local-directories direct
 
 # use caching to use completions for commands like apt and dpkg
 zstyle ':completion:*' use-cache yes
-zstyle ':completion:*' cache-path "$ZSH_CACHE/zcompcache"
+zstyle ':completion:*' cache-path "$ZCACHE/zcompcache"
 
 # set colors for kill process list
 zstyle ':completion:*' list-colors '' # unset all colors first
@@ -59,9 +59,6 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
 
 # ...unless we really want to.
 zstyle '*' single-ignored show
-
-# bind Shift+Tab to reverse menu completion
-bindkey -M menuselect '^[[Z' reverse-menu-complete
 
 # autoload bash completion functions
 autoload -U +X bashcompinit && bashcompinit

@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
-Name=Wallpaper Blur
-Comment=Creates a blurred copy of a background image
-Exec=blur-wallpaper
+Name=Kitwall
+Comment=Create a a background image for kitty
+Exec=kitwall
 X-GNOME-Autostart-enabled=true
 NoDisplay=true
 Categories=Utility;

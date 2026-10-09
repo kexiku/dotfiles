@@ -1,0 +1,81 @@
+#!/bin/bash
+set -euo pipefail
+
+out="${XDG_CONFIG_HOME:-$HOME/.config}/background-kitty"
+hash="${XDG_CACHE_HOME:-$HOME/.cache}/background-kitty.hash"
+
+size="1920x1080"
+blur=16
+brightness=-20
+contrast=-25
+
+# Show help info
+usage() {
+  cat <<EOF
+Kitwall: Create a a background image for kitty terminal
+
+Usage: ${0##*/} [options]
+
+  -s, --size WxH        max size, only shrinks larger images (default: $size)
+  -b, --blur N          blur sigma (default: $blur)
+  -B, --brightness N    brightness, -100...100 (default: $brightness)
+  -c, --contrast N      contrast, -100...100 (default: $contrast)
+  -h, --help            show this help
+EOF
+}
+
+# Parse options
+while (($#)); do
+  case $1 in
+    -s|--size)       size=${2:?missing value for $1};       shift 2 ;;
+    -b|--blur)       blur=${2:?missing value for $1};       shift 2 ;;
+    -B|--brightness) brightness=${2:?missing value for $1}; shift 2 ;;
+    -c|--contrast)   contrast=${2:?missing value for $1};   shift 2 ;;
+    -h|--help)       usage; exit 0 ;;
+    *) echo "Unknown option: $1" >&2; usage >&2; exit 2 ;;
+  esac
+done
+
+# Check ImageMagick version
+command -v magick >/dev/null || { echo "kitwall: magick not found (need ImageMagick v7)" >&2; exit 1; }
+
+key="picture-uri"
+color_scheme="org.gnome.desktop.interface color-scheme"
+
+# Check for dark theme
+if [[ $(gsettings get "$color_scheme") == *dark* ]]; then
+  key=picture-uri-dark
+fi
+
+# Get background path
+local schema="org.gnome.desktop.background"
+
+uri=$(gsettings get "$schema" "$key")
+uri=${uri//\'/}
+uri=${uri#file://}
+uri=$(printf '%b' "${uri//%/\\x}")   # decode %20 etc.
+
+
+
+
+
+# Check for existence
+[[ -f "$uri" && -s "$uri" ]] || exit 0
+
+new_hash=$(sha256sum "$uri" | cut -d' ' -f1)
+old_hash=$(cat "$hash" 2>/dev/null || true)
+
+if [ "$new_hash" == "$old_hash" ]; then
+  # Nothing changed → do nothing
+  [[ -f "$out" ]] && exit 0
+else
+  # Save new hash
+  echo "$new_hash" > "$hash"
+fi
+
+# Edit the image
+magick "$uri" \
+  -resize 1920x1080\> \
+  -blur 0x16 \
+  -brightness-contrast -20x-25 \
+  "$out"

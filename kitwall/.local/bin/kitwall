@@ -4,6 +4,7 @@ set -euo pipefail
 out="${XDG_CONFIG_HOME:-$HOME/.config}/background-kitty"
 hash="${XDG_CACHE_HOME:-$HOME/.cache}/background-kitty.hash"
 
+# Default options
 size="1920x1080"
 blur=16
 brightness=-20
@@ -11,16 +12,16 @@ contrast=-25
 
 # Show help info
 usage() {
-  cat <<EOF
+  cat << EOF
 Kitwall: Create a a background image for kitty terminal
 
 Usage: ${0##*/} [options]
 
-  -s, --size WxH        max size, only shrinks larger images (default: $size)
-  -b, --blur N          blur sigma (default: $blur)
-  -B, --brightness N    brightness, -100...100 (default: $brightness)
-  -c, --contrast N      contrast, -100...100 (default: $contrast)
-  -h, --help            show this help
+  -s, --size WxH        Max size, only shrinks larger images (default: $size)
+  -b, --blur N          Blur sigma (default: $blur)
+  -B, --brightness N    Brightness, -100...100 (default: $brightness)
+  -c, --contrast N      Contrast, -100...100 (default: $contrast)
+  -h, --help            Show this help
 EOF
 }
 
@@ -37,45 +38,68 @@ while (($#)); do
 done
 
 # Check ImageMagick version
-command -v magick >/dev/null || { echo "kitwall: magick not found (need ImageMagick v7)" >&2; exit 1; }
-
-key="picture-uri"
-color_scheme="org.gnome.desktop.interface color-scheme"
-
-# Check for dark theme
-if [[ $(gsettings get "$color_scheme") == *dark* ]]; then
-  key=picture-uri-dark
+if ! command -v magick > /dev/null; then
+  echo "kitwall: magick command not found (ImageMagick v7 is required)" >&2
+  exit 1
 fi
 
-# Get background path
-local schema="org.gnome.desktop.background"
+# Define Gnome color scheme
+color_scheme=$(gsettings get org.gnome.desktop.interface color-scheme)
 
-uri=$(gsettings get "$schema" "$key")
-uri=${uri//\'/}
-uri=${uri#file://}
-uri=$(printf '%b' "${uri//%/\\x}")   # decode %20 etc.
-
-
-
-
-
-# Check for existence
-[[ -f "$uri" && -s "$uri" ]] || exit 0
-
-new_hash=$(sha256sum "$uri" | cut -d' ' -f1)
-old_hash=$(cat "$hash" 2>/dev/null || true)
-
-if [ "$new_hash" == "$old_hash" ]; then
-  # Nothing changed → do nothing
-  [[ -f "$out" ]] && exit 0
+# Define the picture uri key based on color theme
+if [[ $color_scheme == *dark* ]]; then
+  key="picture-uri-dark"
 else
-  # Save new hash
-  echo "$new_hash" > "$hash"
+  key="picture-uri"
 fi
+
+# Get background image path
+bg_schema="org.gnome.desktop.background"
+
+uri=$(gsettings get "$bg_schema" "$key")
+uri=${uri//\'/} # Remove single quotes
+uri=${uri#file://} # Remove the 'file://' prefix
+uri=$(printf '%b' "${uri//%/\\x}") # Decode URI-encoded characters
+
+# Check if the background image exists
+if [[ ! -f $uri ]]; then
+  echo "kitwall: background image not found at '$uri'" >&2
+  exit 1
+
+# Check if the background image file is valid
+if [[ ! -s $uri ]]; then
+  echo "kitwall: invalid background image at '$uri'" >&2
+  exit 1
+fi
+
+# Hash the background image & all adjustment parameters
+new_hash=$({ sha256sum < "$uri"; echo "$size $blur $brightness $contrast"; } | sha256sum)
+new_hash=$(cut -d' ' -f1 $new_hash) # Extract hash digest
+
+# Check if the output image exists
+if [[ -f $hash && $(<"$hash") == "$new_hash" && -f $out ]]; then
+  echo "kitwall: image already exists, exit with no changes"
+  exit 0
+fi
+
+# Make sure required directories are set
+mkdir -p "$(dirname "$out")" "$(dirname "$hash")"
+
+# Create a temporary copy of the output file
+tmp=$(mktemp "$out.XXXXXX")
+
+# Clean temp files on exit
+trap 'rm -f "$tmp"' EXIT
 
 # Edit the image
 magick "$uri" \
-  -resize 1920x1080\> \
-  -blur 0x16 \
-  -brightness-contrast -20x-25 \
-  "$out"
+  -resize "${size}>" \
+  -blur "0x${blur}" \
+  -brightness-contrast "${brightness}x${contrast}" \
+  "$tmp"
+
+# Write changes to the output file
+mv "$tmp" "$out"
+
+# Save output image hash
+echo "$new_hash" > "$hash"

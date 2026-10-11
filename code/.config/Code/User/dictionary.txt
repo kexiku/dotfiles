@@ -148,6 +148,7 @@ takezip
 taskrefs
 tchx
 thedir
+timezsh
 titlebar
 torrenting
 Trixie

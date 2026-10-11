@@ -1,5 +1,5 @@
-# Make sure that the terminal is in application mode when zle is active, since
-# only then values from $terminfo are valid
+# Make sure that the terminal is in application mode when zle is active,
+# since only then values from $terminfo are valid
 if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
   function zle-line-init() {
     echoti smkx
@@ -77,6 +77,9 @@ bindkey -M emacs '^[[1;5D' backward-word
 
 # [Ctrl-RightArrow] - move one word forward
 bindkey -M emacs '^[[1;5C' forward-word
+
+# [Ctrl-S] Show git status
+bindkey -s '^s' 'git status --short^M'
 
 # [Esc-l] - run command: ls
 bindkey -s '\el' '^q ls\n'

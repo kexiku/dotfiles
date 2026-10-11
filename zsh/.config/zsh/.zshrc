@@ -4,7 +4,6 @@ ZSH_THEME="waiwai"
 # plugins
 plugins=(
   colored-man-pages
-  zsh-allclear
   zsh-autosuggestions
 )
 

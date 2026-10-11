@@ -1,4 +1,5 @@
 # bak: Create a backup copy of a file or directory
+#
 emulate -L zsh
 
 # Check if argument was provided

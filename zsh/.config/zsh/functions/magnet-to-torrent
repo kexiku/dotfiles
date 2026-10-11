@@ -1,6 +1,8 @@
 # magnet-to-torrent: Create a Torrent file from a MagnetURI
-
-# Algorithm borrowed from http://wiki.rtorrent.org/MagnetUri and adapted to work with zsh
+#
+# Based on torrent plugin by Ryan Neufeld
+# (https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/torrent/torrent.plugin.zsh)
+#
 emulate -L zsh
 
 local hashh filename

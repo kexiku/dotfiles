@@ -50,10 +50,12 @@ fuckoff
 genderize
 getent
 GFXMODE
+givensuman
 gparted
 Grubhalla
 gsettings
 happyzxzxz
+hashh
 histignorealldups
 hitbox
 hkps
@@ -98,6 +100,7 @@ mpdconf
 multios
 multiuser
 netinst
+Neufeld
 Neumann
 Neuro
 neurodebian

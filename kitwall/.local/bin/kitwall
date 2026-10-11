@@ -33,7 +33,7 @@ while (($#)); do
     -B|--brightness) brightness=${2:?missing value for $1}; shift 2 ;;
     -c|--contrast)   contrast=${2:?missing value for $1};   shift 2 ;;
     -h|--help)       usage; exit 0 ;;
-    *) echo "Unknown option: $1" >&2; usage >&2; exit 2 ;;
+    *) echo -e "Unknown option: $1 \n" >&2; usage >&2; exit 2 ;;
   esac
 done
 
@@ -65,6 +65,7 @@ uri=$(printf '%b' "${uri//%/\\x}") # Decode URI-encoded characters
 if [[ ! -f $uri ]]; then
   echo "kitwall: background image not found at '$uri'" >&2
   exit 1
+fi
 
 # Check if the background image file is valid
 if [[ ! -s $uri ]]; then
@@ -73,8 +74,13 @@ if [[ ! -s $uri ]]; then
 fi
 
 # Hash the background image & all adjustment parameters
-new_hash=$({ sha256sum < "$uri"; echo "$size $blur $brightness $contrast"; } | sha256sum)
-new_hash=$(cut -d' ' -f1 $new_hash) # Extract hash digest
+new_hash=$(
+  {
+    sha256sum < "$uri"
+    echo "$size $blur $brightness $contrast"
+
+  } | sha256sum | cut -d' ' -f1 # Extract hash digest
+)
 
 # Check if the output image exists
 if [[ -f $hash && $(<"$hash") == "$new_hash" && -f $out ]]; then

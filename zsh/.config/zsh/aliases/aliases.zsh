@@ -42,6 +42,9 @@ alias hsi='history | grep -i'
 alias c='clear'
 alias cl='clear'
 
+# check zsh startup time
+alias timezsh='for i in $(seq 1 10); do time zsh -i -c exit; done'
+
 # other aliases
 alias grep='grep --color'
 

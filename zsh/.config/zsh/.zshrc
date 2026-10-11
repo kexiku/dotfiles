@@ -67,12 +67,6 @@ for plugin ($plugins); do
 done
 unset plugin
 
-# load aliases
-for alias_file ("$ZDOTDIR"/aliases/*.zsh); do
-  source "$alias_file"
-done
-unset alias_file
-
 # load theme
 source "$ZDOTDIR/helpers/theme.helper.zsh"
 
@@ -83,6 +77,12 @@ if [[ -n "$ZSH_THEME" ]]; then
     print -u2 "[zsh] Theme '$ZSH_THEME' not found."
   fi
 fi
+
+# load aliases
+for alias_file ("$ZDOTDIR"/aliases/*.zsh); do
+  source "$alias_file"
+done
+unset alias_file
 
 # load zsh-syntax-highlighting plugin
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

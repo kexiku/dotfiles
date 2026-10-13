@@ -1,8 +1,4 @@
 # Clear terminal when cd into $HOME
-#
-# Based on zsh-allclear plugin by givensuman
-# (https://github.com/givensuman/zsh-allclear)
-#
 function _clear_on_chpwd() {
   if [[ $PWD = $HOME ]]; then
     emulate -L zsh; clear;

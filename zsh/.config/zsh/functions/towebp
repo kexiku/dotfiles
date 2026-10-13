@@ -1,0 +1,13 @@
+# towebp: Convert image to webp
+#
+emulate -L zsh
+
+# Parse options
+local -A opts
+zparseopts -D -E -A opts -- q: -quality:
+
+# Set quality
+local quality="${opts[-q]:-${opts[--quality]:-100}}"
+
+# Convert with ImageMagick
+magick "$1" -quality "${quality}" "${1:r}.webp"

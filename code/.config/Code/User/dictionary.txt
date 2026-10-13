@@ -151,6 +151,7 @@ thedir
 timezsh
 titlebar
 torrenting
+towebp
 Trixie
 unfunction
 unifont
@@ -162,6 +163,7 @@ vmlinux
 Waifu
 Waifus
 waiwai
+webp
 wght
 Widdis
 Wimblows
@@ -174,6 +176,7 @@ zcompdump
 zcompile
 zhist
 Zoomer
+zparseopts
 zrecompile
 zshist
 ZSTATE

@@ -1,5 +1,5 @@
 # path
-export PATH=$HOME/.local/bin:$PATH:/usr/games
+export PATH=$HOME/.local/bin:$HOME/.cargo/bin:$PATH:/usr/games
 
 # preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then

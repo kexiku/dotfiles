@@ -1,0 +1,4 @@
+# mkcd: make a directory & cd into it
+#
+emulate -L zsh
+mkdir -p $@ && cd ${@:$#}

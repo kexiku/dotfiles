@@ -664,16 +664,23 @@ PROMPT="╭─${user_prompt} ${current_dir} \${vcs_prompt}
 ╰─${emoji} "
 RPROMPT="${return_code}"
 
-# ╭── 𖹭 MISC 𖹭 ────────────────────────────────────────────────────────────────────────────────────
+# ╭── 𖹭 CHEAT SHEET 𖹭 ─────────────────────────────────────────────────────────────────────────────
 # │
 # ✦ ─ prompt format strings ───────────────────────────────────────────────────────────────────────
 
-# %F => color dict
-# %f => reset color
+# %n => username
+# %m => hostname (short)
+# %M => hostname (full)
 # %~ => current path
 # %* => time
-# %n => username
-# %m => hostname
+
+# ✦ ─ colors format strings ───────────────────────────────────────────────────────────────────────
+
+# %F{color} => set foreground color
+# %f => reset foreground color
+
+# %K{color} => set background color
+# %k => reset background color
 
 # ✦ ─ vcs_info format strings ─────────────────────────────────────────────────────────────────────
 
@@ -685,3 +692,9 @@ RPROMPT="${return_code}"
 # %m => stashes info
 # %c => staged changes
 # %u => unstaged changes
+
+# ✦ ─ conditions ──────────────────────────────────────────────────────────────────────────────────
+
+# %(!.A.B) => root?
+# %(?.A.B) => last cmd success?
+# %(#.A.B) => privileged shell?

@@ -23,6 +23,7 @@ compaudit
 COMPDUMP
 COMPFIX
 compinstall
+complist
 cssclasses
 DCCP
 dconf
@@ -175,6 +176,7 @@ zcompcache
 zcompdump
 zcompile
 zhist
+zmodload
 Zoomer
 zparseopts
 zrecompile

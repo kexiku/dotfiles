@@ -16,6 +16,7 @@ bson
 Btrfs
 catppuccin
 cfdisk
+Childs
 cloze
 Codenames
 codepoints
@@ -38,6 +39,7 @@ everforest
 Excretus
 fdisk
 felipeftn
+Ferreira
 fileencoding
 FINDBAR
 flathub
@@ -67,9 +69,12 @@ IGMP
 inodes
 Inodes
 iwctl
+José
 kanagawa
 kbps
+kefind
 Kexi
+kexiku
 keybinds
 keyrings
 keyserver
@@ -127,6 +132,7 @@ plusplus
 Popout
 Powerline
 PPID
+refind
 Rescan
 rmpc
 rosé

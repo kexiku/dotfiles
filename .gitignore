@@ -9,8 +9,5 @@
 !**/Code/User/settings.json
 !**/Code/User/dictionary.txt
 
-**/mpd/database
-**/mpd/sticker.sql
-
 **/zsh/plugins/
 **/zsh/themes/

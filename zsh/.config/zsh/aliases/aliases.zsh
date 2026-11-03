@@ -19,10 +19,9 @@ alias d='dirs -v'
 
 # list contents
 alias ls='ls --color=tty --group-directories-first'
-alias l='ls -lAFh'
-alias la='ls -lAFh'
-alias lsa='ls -laFh'
-alias ll='ls -lFh'
+alias l='ls -lAh'
+alias la='ls -lah'
+alias ll='ls -lh'
 
 # ask before overwriting
 alias cp='cp -i'

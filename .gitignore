@@ -4,18 +4,13 @@
 **/*Logs
 
 **/Code/User/*
-!**/Code/User/snippets
+!**/Code/User/snippets/
 !**/Code/User/keybindings.json
 !**/Code/User/settings.json
 !**/Code/User/dictionary.txt
 
-**/micro/buffers/*
-
 **/mpd/database
+**/mpd/sticker.sql
 
-**/zsh/plugins/*
-
-**/zsh/themes/*
-!**/zsh/themes/waiwai.zsh-theme
-
-**/zsh/.zshrc.bak
+**/zsh/plugins/
+**/zsh/themes/

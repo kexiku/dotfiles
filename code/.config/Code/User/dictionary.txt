@@ -1,4 +1,5 @@
 adduser
+Adnexa
 ALAC
 albumartist
 allclear
@@ -47,6 +48,7 @@ Flatpaks
 Flatseal
 foldmethod
 fpath
+frameless
 freefilesync
 FREEMEDIAHECKYEAH
 fuckoff

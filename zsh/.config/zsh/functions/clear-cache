@@ -1,0 +1,13 @@
+# clear-cache: Clear zsh cache directory
+#
+emulate -L zsh
+
+local cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
+
+if [[ ! -d $cache_dir ]]; then
+  print -u2 "clear-cache: $cache_dir does not exist, nothing to clear"
+  return 0
+fi
+
+rm -rf -- "$cache_dir"/*(DN)
+print "🧹 Cleared $cache_dir"

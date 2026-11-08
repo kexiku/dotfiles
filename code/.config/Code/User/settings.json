@@ -110,5 +110,5 @@
   "workbench.secondarySideBar.defaultVisibility": "hidden",
   "workbench.startupEditor": "none",
   "workbench.tree.enableStickyScroll": false,
-  "editor.wordSeparators": "`~!@#$%^&*()_-=+[{]}\\|;:'\",.<>/?"
+  "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?"
 }

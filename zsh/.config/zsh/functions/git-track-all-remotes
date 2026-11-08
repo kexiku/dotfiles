@@ -1,0 +1,9 @@
+# git-track-all-remotes: Create a local copy of every remote branch
+#
+emulate -L zsh
+
+local branch
+
+for branch in `git branch -r | grep -v '\->'`; do
+  git branch --track "${branch#origin/}" "$branch"
+done

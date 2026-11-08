@@ -1,0 +1,7 @@
+# palette: print 16 basic colors
+#
+emulate -L zsh
+
+for c in {0..15}; do
+  print -P "%F{$c}Color %F{7}%B${(r:2:)c}%b: %F{$c}Foreground %K{$c}%F{0} Background %f%k";
+done

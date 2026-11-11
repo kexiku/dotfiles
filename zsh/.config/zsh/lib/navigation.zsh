@@ -19,7 +19,7 @@ _overview() {
   local items=items
   (( total == 1 )) && items=item
 
-  print -P "📂 %F{13}%~%f ✦ %F{13}${total} ${items}%f"
+  print -P "📂 %B%F{4}%~%f ✦ %F{4}${total} ${items}%f%b"
 
   command ls -ldhU --color=tty -- ${entries[1,shown]}
 

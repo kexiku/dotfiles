@@ -40,6 +40,6 @@ Comment[tr]=Klasör karşılaştırma ve eşitleme
 Comment[vi]=So sánh và đồng bộ hóa thư mục
 Comment[zh]=文件夹比较与同步
 Comment[zh_TW]=資料夾比對和同步
-Keywords=Backup Copy
+Keywords=ffs;backup;copy;
 Path=/usr/share/freefilesync
 StartupWMClass=FreeFileSync

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Scroll Factor
+Comment=Adjust touchpad scroll and pinch zoom/rotate sensitivity on Wayland
+Exec=/usr/bin/wsf-gui
+Icon=io.github.danielgrasso.WaylandScrollFactor
+Terminal=false
+Categories=Settings;
+Keywords=Wayland;Scroll;Factor;
+StartupNotify=true

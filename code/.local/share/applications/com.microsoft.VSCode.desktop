@@ -10,7 +10,7 @@ StartupWMClass=com.microsoft.VSCode
 Categories=TextEditor;Development;IDE;
 MimeType=application/x-code-workspace;
 Actions=new-empty-window;
-Keywords=vscode;
+Keywords=vscode;Visual Studio Code;
 
 [Desktop Action new-empty-window]
 Name=New Empty Window

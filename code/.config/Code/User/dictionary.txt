@@ -51,6 +51,7 @@ distros
 downranked
 dups
 emptyline
+Equestria
 errorcolor
 everforest
 Excretus
@@ -84,6 +85,7 @@ gsettings
 guidestripe
 happyzxzxz
 hashh
+HISTFILE
 histignorealldups
 historylog
 hitbox
@@ -256,6 +258,7 @@ zcompcache
 zcompdump
 zcompile
 zhist
+zhistory
 zmodload
 Zoomer
 zparseopts

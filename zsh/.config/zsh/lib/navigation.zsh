@@ -1,40 +1,39 @@
-# Clear a terminal when the current directory is $HOME
-function _clear_on_cd() {
-  if [[ $PWD = $HOME ]]; then
-    emulate -L zsh; clear;
-  fi
+# Clear on cd
+_clear() {
+  emulate -L zsh
+  soft-clear 2> /dev/null || clear
 }
 
-# List the first 10 entries in a directory
-function _list_on_cd() {
+# List the first 10 entries on cd
+_overview() {
   emulate -L zsh
+  [[ $PWD == $HOME ]] && return 0
 
-  [[ $PWD = $HOME ]] && return
+  local -a entries=( *(DN/) *(DN^/) ) # Directories first, no error if empty
+  local -i total=${#entries}
 
-  local -a entries
-  entries=( *(DN) ) # Avoid errors in empty dirs
-  local total=${#entries}
+  (( total )) || return 0
 
-  (( total == 0 )) && return
+  local -i shown=$(( total < 10 ? total : 10 ))
 
-  local shown=$(( total < 10 ? total : 10 ))
-  local items=$([[ $shown == 1 ]] && echo "item" || echo "items")
+  local items=items
+  (( total == 1 )) && items=item
 
-  print -P "✦ %F{12}${total} ${items}%f"
+  print -P "📂 %F{13}%~%f ✦ %F{13}${total} ${items}%f"
 
-  command ls -lAh --color=always --group-directories-first | tail -n +2 | head -n 10
+  command ls -ldhU --color=tty -- ${entries[1,shown]}
 
-  local remaining=$(( total - shown ))
+  local -i remaining=$(( total - shown ))
 
   if (( remaining > 0 )); then
-    print -P "%F{8}└───────── \e[3m(${remaining} more)\e[0m%f"
+    print -P "%F{8}%{\e[3m%}...${remaining} more%{\e[0m%}%f"
   fi
 }
 
 # Add hooks to trigger on cd
 autoload -Uz add-zsh-hook
-add-zsh-hook chpwd _clear_on_cd
-add-zsh-hook chpwd _list_on_cd
+add-zsh-hook chpwd _clear
+add-zsh-hook chpwd _overview
 
 # Options
 setopt auto_cd           # omit cd when entering a directory

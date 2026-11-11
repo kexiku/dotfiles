@@ -1,0 +1,6 @@
+# soft-clear: Clear without wiping the previous output
+#
+emulate -L zsh
+
+printf "\n%.0s" {1..$LINES}
+printf "\e[H" # Move cursor to the top-left corner

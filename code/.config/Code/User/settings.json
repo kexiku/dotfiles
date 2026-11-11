@@ -45,8 +45,9 @@
   "extensions.autoCheckUpdates": false,
   "extensions.autoUpdate": "off",
   "files.associations": {
-    "*.ron": "rust",
-    "*.bak": "shellscript"
+    "**/zsh/functions/*": "shellscript",
+    "*.bak": "shellscript",
+    "*.ron": "rust"
   },
   "files.exclude": {
     ".directory": true // directory's metadata file for KDE Plasma
@@ -97,7 +98,7 @@
   "window.menuBarVisibility": "compact",
   "window.newWindowDimensions": "fullscreen",
   "window.restoreFullscreen": true,
-  "window.title": "${dirty}${rootNameShort}${profileName}${separator}Code",
+  "window.title": "${dirty}${rootNameShort}${separator}Code",
   "window.titleSeparator": " ⋅ ",
   "window.zoomLevel": 1,
   "workbench.activityBar.location": "top",

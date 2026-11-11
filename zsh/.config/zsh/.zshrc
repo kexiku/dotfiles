@@ -11,7 +11,7 @@ plugins=(
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 
-# create required dirs if missing
+# create required directories
 mkdir -p "$ZSH"
 mkdir -p "$ZCACHE"
 mkdir -p "$ZSTATE"
@@ -77,12 +77,6 @@ if [[ -n "$ZSH_THEME" ]]; then
     print -u2 "[zsh] Theme '$ZSH_THEME' not found."
   fi
 fi
-
-# load aliases
-for alias_file ("$ZDOTDIR"/aliases/*.zsh); do
-  source "$alias_file"
-done
-unset alias_file
 
 # load zsh-syntax-highlighting plugin
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

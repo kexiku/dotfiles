@@ -1,4 +1,4 @@
-# palette: print 16 basic colors
+# palette: Print 16 ANSI colors
 #
 emulate -L zsh
 

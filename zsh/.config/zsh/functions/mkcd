@@ -1,4 +1,4 @@
-# mkcd: make a directory & cd into it
+# mkcd: Make a directory and cd into it
 #
 emulate -L zsh
 mkdir -p $@ && cd ${@:$#}

@@ -1,12 +1,10 @@
 # set history file properties
-HISTFILE="$ZSTATE/.zhist"
+HISTFILE="$ZSTATE/.zhistory"
 HISTSIZE=10000
 SAVEHIST=10000
 
 setopt append_history         # append history to HISTFILE on session exit
-setopt extended_history       # record command timestamps in HISTFILE
 setopt hist_ignore_space      # ignore commands that start with space
-setopt hist_ignore_dups       # ignore duplicated commands history list
-setopt hist_save_no_dups      # omits older duplicates when writing to HISTSIZE
+setopt hist_ignore_dups       # ignore consecutive duplicate commands
 setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
-setopt hist_verify            # show command with history expansion to user before running it
+setopt hist_verify            # prevent immediate execution when using history expansion

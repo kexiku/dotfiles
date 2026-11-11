@@ -1,0 +1,11 @@
+# zcache-clear: Clear zsh cache directory
+#
+emulate -L zsh
+
+if [[ ! -d $ZCACHE ]]; then
+  print -u2 "[zcache-clear] $ZCACHE does not exist, nothing to clear"
+  return 1
+fi
+
+rm -rf -- "$ZCACHE"/*(DN)
+print "🧹 Cleared $ZCACHE"

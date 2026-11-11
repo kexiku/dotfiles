@@ -1,4 +1,4 @@
-# set color variable such as $fg, $bg, $color and $reset_color
+# set color variables such as $fg, $bg, $color and $reset_color
 autoload -Uz colors && colors
 
 # allow variables and commands in PROMPT variables

@@ -1,0 +1,5 @@
+# hist: Show command history from the end
+#
+emulate -L zsh
+
+less +G $HISTFILE

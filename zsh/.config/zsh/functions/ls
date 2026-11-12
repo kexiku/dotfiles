@@ -1,0 +1,41 @@
+# ls: A wrapper that adds a custom header to ls
+#
+emulate -L zsh
+
+local is_tty_stdout=0
+local is_long_format=0
+
+# Check if output is a terminal
+[[ -t 1 ]] && is_tty_stdout=1
+
+# Check if long listing format enabled
+local arg
+
+for arg in "$@"; do
+  [[ $arg == -- ]] && break;
+
+  if [[ $arg == -[^-]* && ${arg#-} == *l* ]]; then
+    is_long_format=1
+  fi
+done
+
+# Plain ls in case no conditions met
+if [[ ! $is_tty_stdout || ! $is_long_format ]]; then
+  command ls "$@"
+  return
+fi
+
+# Save the output & exit code
+local out=$(command ls --color=auto --group-directories-first "$@")
+local ret=$?
+
+# If succeed, print the header
+if (( ret == 0 )); then
+  local -a lines=( "${(@f)out}" ) # Count the lines in output
+  lines=$(( $#lines - 1 )) # Remove the "total N" line
+  _dir_header $lines
+fi
+
+# Print the raw output regardless of exit status
+print -r -- "$out"
+return ret

@@ -4,13 +4,6 @@ autoload -Uz colors && colors
 # allow variables and commands in PROMPT variables
 setopt prompt_subst
 
-# use diff --color if available
-if command diff --color /dev/null{,} &>/dev/null; then
-  function diff {
-    command diff --color "$@"
-  }
-fi
-
 # default coloring for GNU-based ls
 if [[ -z "$LS_COLORS" ]]; then
   if (( $+commands[dircolors] )); then # define LS_COLORS via dircolors if available

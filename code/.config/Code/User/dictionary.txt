@@ -180,6 +180,7 @@ PPID
 prevword
 promptcolor
 punct
+pushdminus
 quickblank
 quotestr
 rawsequences

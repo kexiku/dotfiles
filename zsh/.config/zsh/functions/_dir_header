@@ -1,0 +1,10 @@
+# _dir_header: Print an additional info about a directory
+#
+emulate -L zsh
+
+local total=$1
+local items=items
+
+(( total == 1 )) && items=item
+
+print -P "📂 %B%F{4}%~%f ✦ %F{4}${total} ${items}%f%b"

@@ -34,6 +34,9 @@ alias trash='gio trash'
 # df
 alias df='df -h'
 
+# diff
+alias diff='diff --color'
+
 # grep
 alias grep='grep --color'
 

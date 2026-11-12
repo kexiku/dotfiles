@@ -1,10 +1,10 @@
-# Clear on cd
+# Clear terminal
 _clear() {
   emulate -L zsh
   soft-clear 2> /dev/null || clear
 }
 
-# List the first 10 entries on cd
+# Get a directory overview
 _overview() {
   emulate -L zsh
   [[ $PWD == $HOME ]] && return 0
@@ -14,16 +14,12 @@ _overview() {
 
   (( total )) || return 0
 
+  _dir_header $total
+
   local -i shown=$(( total < 10 ? total : 10 ))
-
-  local items=items
-  (( total == 1 )) && items=item
-
-  print -P "📂 %B%F{4}%~%f ✦ %F{4}${total} ${items}%f%b"
-
-  command ls -ldhU --color=tty -- ${entries[1,shown]}
-
   local -i remaining=$(( total - shown ))
+
+  command ls -ldhU --color=always -- ${entries[1,shown]}
 
   if (( remaining > 0 )); then
     print -P "%F{8}%{\e[3m%}...${remaining} more%{\e[0m%}%f"

@@ -39,10 +39,12 @@ alias cl='clear'
 alias df='df -h'
 
 # diff
-alias diff='diff --color'
+alias diff='diff --color=auto'
 
 # grep
-alias grep='grep --color'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 
 # ls
 alias l='ls -lAh'

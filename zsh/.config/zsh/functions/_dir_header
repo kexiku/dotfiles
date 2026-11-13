@@ -1,4 +1,4 @@
-# _dir_header: Print an additional info about a directory
+# Print an additional info about a directory
 #
 emulate -L zsh
 

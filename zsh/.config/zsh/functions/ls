@@ -3,7 +3,7 @@
 emulate -L zsh
 
 # Return if output is not a terminal
-[[ ! -t 1 ]] && command ls "$@" && return
+[[ -t 1 ]] || { command ls "$@"; return; }
 
 # Check if long listing format enabled
 local is_long_format=0

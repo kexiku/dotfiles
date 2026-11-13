@@ -8,11 +8,8 @@ if (( $# != 1 )); then
   return 2
 fi
 
-# Prevent variables from accessing globally
-local target backup
-
 # Strip trailing slashes
-target=$1
+local target=$1
 
 while [[ "$target" == ?*/ ]]; do
   target="${target%/}"
@@ -25,6 +22,8 @@ if [ ! -e "$target" ]; then
 fi
 
 # If target already ends with ".bak" - do NOT add another ".bak"
+local backup
+
 [[ $target == *.bak ]] && backup="$target" || backup="$target.bak"
 
 # Check if target is a backup file

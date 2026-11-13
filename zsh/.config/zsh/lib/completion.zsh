@@ -44,7 +44,7 @@ zstyle ':completion:*' list-colors '' # unset all colors first
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
 
 # set completion colors to be the same as 'ls'
-[[ -z "$LS_COLORS" ]] || zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+[[ -n "$LS_COLORS" ]] && zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 # autoload bash completion functions
 autoload -U +X bashcompinit && bashcompinit

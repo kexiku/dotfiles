@@ -59,6 +59,7 @@ extendsyntax
 fdisk
 felipeftn
 Ferreira
+fgrep
 fileencoding
 FINDBAR
 findnext

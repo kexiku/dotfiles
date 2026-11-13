@@ -19,9 +19,6 @@ mkdir -p "$ZSTATE"
 # avoid duplicated entries in fpath
 typeset -U fpath
 
-# add functions & completions to fpath
-fpath=("$ZDOTDIR"/{functions,completions} $fpath)
-
 # add plugins to fpath
 for plugin ($plugins); do
   if [[ -f "$ZDOTDIR/plugins/$plugin/$plugin.plugin.zsh" ]]; then
@@ -31,6 +28,9 @@ for plugin ($plugins); do
   fi
 done
 unset plugin
+
+# add functions & completions to fpath
+fpath=("$ZDOTDIR"/{functions,completions} $fpath)
 
 # load functions
 func_files=("$ZDOTDIR"/functions/*(N-.:t))

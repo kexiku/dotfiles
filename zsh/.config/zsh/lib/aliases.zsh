@@ -31,6 +31,10 @@ alias rm='rm -i'
 # Move to trash
 alias trash='gio trash'
 
+# clear
+alias c='clear'
+alias cl='clear'
+
 # df
 alias df='df -h'
 
@@ -41,7 +45,6 @@ alias diff='diff --color'
 alias grep='grep --color'
 
 # ls
-alias ls='ls --color=tty --group-directories-first'
 alias l='ls -lAh'
 alias la='ls -lah'
 alias ll='ls -lh'
@@ -55,8 +58,3 @@ alias p='rmpc'
 
 # viu
 alias v='viu'
-
-# Zsh functions
-alias c='soft-clear'
-alias cl='soft-clear'
-alias h='hist'

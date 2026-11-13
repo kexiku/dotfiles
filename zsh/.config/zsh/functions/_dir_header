@@ -2,9 +2,9 @@
 #
 emulate -L zsh
 
-local total=$1
-local items=items
+local total=${1:-0}
+local label=items
 
-(( total == 1 )) && items=item
+(( total == 1 )) && label=item
 
-print -P "📂 %B%F{4}%~%f ✦ %F{4}${total} ${items}%f%b"
+print -P "📂 %B%F{4}%~%f ✦ %F{4}${total} ${label}%f%b"

@@ -1,0 +1,12 @@
+# clear: A wrapper that use soft-clear when available
+#
+emulate -L zsh
+
+# Return if output is not a terminal
+[[ ! -t 1 ]] && command clear "$@" && return
+
+if (( $+commands[soft-clear] || $+functions[soft-clear] )); then
+  soft-clear "$@"
+else
+  command clear "$@"
+fi
